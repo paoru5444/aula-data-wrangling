@@ -1,0 +1,243 @@
+install.packages("tidyverse")
+install.packages("readxl")
+install.packages("knitr")
+library(readxl)
+dataset_inicial <- read_excel("(1.2) Dataset Aula Data Wrangling.xls")
+dataset_merge <- read_excel("(1.3) Dataset Aula Data Wrangling (Join).xls")
+View(dataset_inicial) # Mostra a base de dados completa em uma nova aba
+str(dataset_inicial) # Mostra a estrutura da base de dados
+dim(dataset_inicial) # As dimensões do dataset: linhas e colunas, respectivamente
+View(dataset_merge)
+View(dataset_merge)
+View(dataset_inicial)
+View(dataset_inicial)
+str(dataset_inicial) # Mostra a estrutura da base de dados
+glimpse(dataset_inicial) # Função parecida com a str
+glimpse(dataset_inicial) # Função parecida com a str
+str(dataset_inicial) # Mostra a estrutura da base de dados
+dim(dataset_inicial) # As dimensões do dataset: linhas e colunas, respectivamente
+names(dataset_inicial) # Para ver os nomes das variáveis
+dataset_inicial$`Tempo para chegar à escola (minutos)`
+print(dataset_inicial) # Apresenta a base de dados no console
+print(dataset_inicial$`Tempo para chegar à escola (minutos)`)
+dataset_inicial$`Tempo para chegar à escola (minuts)` # Entre crases por causa dos espaços na variável
+o
+dataset_inicial$`Tempo para chegar à escola (minutos)` # Entre crases por causa dos espaços na variável
+nova_base <- rename(dataset_inicial,
+`observacoes teste` = "Observações",
+tempo = "Tempo para chegar",
+distancia = "Distância percorrida",
+semaforos = "Semáforos",
+periodo = "Período",
+perfil = "Perfil")
+nova_base <- rename(dataset_inicial,
+observacoes = "Observações",
+tempo = "Tempo para chegar",
+distancia = "Distância percorrida",
+semaforos = "Semáforos",
+periodo = "Período",
+perfil = "Perfil")
+install.packages("tidyverse")
+library("tidyverse")
+nova_base <- rename(dataset_inicial,
+observacoes = "Observações",
+tempo = "Tempo para chegar",
+distancia = "Distância percorrida",
+semaforos = "Semáforos",
+periodo = "Período",
+perfil = "Perfil")
+novos_nomes <- c("Observações",
+"Tempo para chegar",
+"Distância percorrida",
+"Semáforos",
+"Período",
+"Perfil")
+print(novos_nomes)
+names(dataset_inicial) <- novos_nomes
+nova_base <- rename(dataset_inicial,
+observacoes = "Observações",
+tempo = "Tempo para chegar",
+distancia = "Distância percorrida",
+semaforos = "Semáforos",
+periodo = "Período",
+perfil = "Perfil")
+View(nova_base)
+View(nova_base)
+View(nova_base)
+nova_base <- rename(dataset_inicial,
+"observacoes teste" = "Observações",
+tempo = "Tempo para chegar",
+distancia = "Distância percorrida",
+semaforos = "Semáforos",
+periodo = "Período",
+perfil = "Perfil")
+View(nova_base)
+View(nova_base)
+nova_base %>% rename(obs = observacoes,
+temp = tempo,
+dist = distancia,
+sem = semaforos,
+per = periodo,
+perf = perfil)
+nova_base_pipe <- nova_base %>%
+rename(obs = observacoes,
+temp = tempo,
+dist = distancia,
+sem = semaforos,
+per = periodo,
+perf = perfil)
+nova_base <- rename(dataset_inicial,
+"observacoes teste" = "Observações",
+tempo = "Tempo para chegar",
+distancia = "Distância percorrida",
+semaforos = "Semáforos",
+periodo = "Período",
+perfil = "Perfil")
+nova_base %>% rename(obs = observacoes,
+temp = tempo,
+dist = distancia,
+sem = semaforos,
+per = periodo,
+perf = perfil)
+nova_base <- rename(dataset_inicial,
+observacoes = "Observações",
+tempo = "Tempo para chegar",
+distancia = "Distância percorrida",
+semaforos = "Semáforos",
+periodo = "Período",
+perfil = "Perfil")
+nova_base %>% rename(obs = observacoes,
+temp = tempo,
+dist = distancia,
+sem = semaforos,
+per = periodo,
+perf = perfil)
+nova_base_pipe <- nova_base %>%
+rename(obs = observacoes,
+temp = tempo,
+dist = distancia,
+sem = semaforos,
+per = periodo,
+perf = perfil)
+rm(nova_base_pipe) # Remove o objeto especificado do ambiente
+nova_base %>% rename(obs = 1,
+temp = 2,
+dist = 3,
+sem = 4,
+per = 5,
+perf = 6)
+nova_base %>% rename(sem = 4,
+perf = 6)
+variavel_nova_1 <- c(1,2,3,4,5,6,7,8,9,10)
+variavel_nova_2 <- c(11:20)
+print(variavel_nova_1)
+print(variavel_nova_2)
+base_inclui <- mutate(nova_base,
+variavel_nova_1,
+variavel_nova_2)
+View(base_inclui)
+View(base_inclui)
+View(base_inclui)
+nova_base %>%
+rename(obs = observacoes,
+temp = tempo,
+dist = distancia,
+sem = semaforos,
+per = periodo,
+perf = perfil) %>%
+mutate(variavel_nova_1,
+variavel_nova_2,
+temp_novo = temp*2)
+base_texto_1 <- mutate(nova_base,
+semaforos = replace(semaforos, semaforos==0, "Zero"),
+semaforos = replace(semaforos, semaforos==1, "Um"),
+semaforos = replace(semaforos, semaforos==2, "Dois"),
+semaforos = replace(semaforos, semaforos==3, "Três"))
+base_texto_2 <- mutate(nova_base,
+semaforos = recode(semaforos,
+`0` = "Zero",
+`1` = "Um",
+`2` = "Dois",
+`3` = "Três"))
+base_texto_3 <- mutate(nova_base,
+perfil_novo = recode(perfil,
+"calmo" = "perfil 1",
+"moderado" = "perfil 2",
+"agressivo" = "perfil 3"))
+View(base_texto_3)
+base_texto_valores <- mutate(nova_base,
+periodo = recode(periodo,
+"Manhã" = 0,
+"Tarde" = 1))
+View(base_texto_valores)
+View(base_texto_valores)
+base_dummy <- mutate(nova_base, perfil_agressivo = recode(perfil,
+"agressivo"=1,
+"moderado"=0,
+"calmo"=0),
+perfil_moderado = recode(perfil,
+"agressivo"=0,
+"moderado"=1,
+"calmo"=0),
+perfil_calmo = recode(perfil,
+"agressivo"=0,
+"moderado"=0,
+"calmo"=1))
+View(base_dummy)
+install.packages("fastDummies")
+library("fastDummies")
+base_dummy_2 <- dummy_columns(.data = nova_base,
+select_columns = c("periodo",
+"perfil"),
+remove_selected_columns = F,
+remove_first_dummy = F)
+base_categorias <- mutate(base_categorias,
+tempo = NULL)
+base_categorias <- mutate(nova_base,
+categorias_tempo = case_when(tempo <= 20 ~ "Rápido",
+tempo > 20 & tempo <= 40 ~ "Intermediário",
+tempo > 40 ~ "Demorado"))
+View(base_categorias)
+ias,
+base_categorias <- mutate(base_categorias,
+tempo = NULL)
+base_exclui_rename <- nova_base %>%
+transmute(observacoes, tempo, variavel_nova_1) %>%
+mutate(tempo_novo = recode(tempo,
+`10` = "dez",
+`15` = "quinze",
+`20` = "vinte",
+`25` = "vinte e cinco",
+`30` = "trinta",
+`35` = "trinta e cinco",
+`40` = "quarenta",
+`50` = "cinquenta",
+`55` = "cinquenta e cinco")) %>%
+mutate(posicao = cut(tempo,
+breaks = c(0, median(tempo), Inf),
+labels = c("menores", "maiores")))
+View(base_exclui_rename)
+View(base_exclui_rename)
+median(nova_base$tempo)
+summary(base_exclui_rename$posicao)
+summary(base_exclui_rename)
+selecao_1 <- nova_base[,c("observacoes","tempo")] # critérios após a vírgula
+selecao_1 <- nova_base[,c("observacoes","tempo")] # critérios após a vírgula
+selecao_2 <- nova_base[,1:3] # selecionando pela posição das colunas de 1 a 3
+View(selecao_2)
+View(selecao_1)
+View(nova_base)
+View(selecao_1)
+nova_base %>% relocate(perfil, .after = observacoes)
+nova_base %>% relocate(perfil, .before = tempo)
+nova_base %>% relocate(perfil, .after = observacoes)
+nova_base %>% relocate(perfil, .before = tempo)
+nova_base %>% relocate(perfil, .after = observacoes)
+nova_base %>% relocate(perfil, .before = observacoes)
+nova_base %>% relocate(perfil, .before = observacoes)
+str(dataset_inicial) # Mostra a estrutura da base de dados
+dim(dataset_inicial) # As dimensões do dataset: linhas e colunas, respectivamente
+names(dataset_inicial) # Para ver os nomes das variáveis
+install.packages("tidyverse")
+install.packages("readxl")
+install.packages("knitr")
